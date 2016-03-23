@@ -1,0 +1,27 @@
+{
+  "name": "VacumCleanerWorld",
+  "version": "0.0.1",
+  "description": "Vacum Cleaner World",
+  "author": "Kirill Liubun",
+  "main": "lib/foo.js",
+  "repository": {
+    "type": "git",
+    "url": "https://kirill_liubun@bitbucket.org/kirill_liubun/nc-sdn-sim-js-css.git"
+  },
+  "keywords": [
+    "javascript",
+    "css",
+    "webpack"
+  ],
+  "dependencies": {
+    "babel-core": "5.8.34",
+    "babel-loader": "5.4.0",
+    "highcharts": "^4.2.3",
+    "jquery": "2.1.4",
+    "snapsvg": "*",
+    "underscore": "1.8.3",
+    "webpack": "1.12.9",
+    "imports-loader" : "*"
+  },
+  "license": "MIT"
+}

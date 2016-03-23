@@ -8,52 +8,41 @@
 	<link rel="stylesheet" href="./js/vendor/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
+<div class="container container_cleaner">
 	<div class="row">
-  		<div class="col-md-8 col-md-offset-2">
+  		<div class="col-md-8 col-md-offset-2 play-arena">
   			<div class="svg-container">
   				<svg id="svg"></svg>
   			</div>
   		</div>
+  		<div class="col-md-2">
+  			<!-- TODO refacto change bootstrap styles on your own due to tag mess -->
+  			<div class="menu-container">
+  				<div class="menu">
+	  				<div class="btn-group btn-group-justified" role="group"> 
+			  			<div class="btn-group" role="group">
+			  				<button class="btn btn-success" id="start">Start</button>
+			  			</div>
+		  			</div>
+		  			<br>
+		  			 <div class="btn-group btn-group-justified" role="group"> 
+			  			<div class="btn-group btn-group-justified" role="group">
+			  				<button class="btn btn-primary" id="gen">Generate Trash</button>
+			  			</div>
+		  			</div>
+		  			<br>
+		  			<div class="btn-group btn-group-justified" role="group"> 
+			  			<div class="btn-group btn-group-justified" role="group">
+			  				<button class="btn btn-danger" id="stop">Stop</button>
+			  			</div>
+		  			</div>
+  				</div>
+  			</div>
+  		</div>
 	</div>
 </div>
-<button class="btn btn-success" id="start">Start</button>
-<button class="btn btn-error" id="stop">Stop</button>
-<button class="btn btn-primary" id="gen">Generate Trash</button>
-	
-<script src="./js/vendor/underscore-min.js"></script>	
-<script src="./js/vendor/jquery-2.2.1.min.js"></script>
-<script src="./js/vendor/snap.svg.js"></script>	
-<script src="./js/Environment.js"></script>	
-<script src="./js/Cleaner.js"></script>	
-<script src="./js/Trash.js"></script>	
-<script>
-	var s = Snap("#svg");
-		var env = new Environment({svg: s});
-		env.renderScene();
-		var cln = new Cleaner({scene : env});
-		cln.render(1, 1);
-		var gen = new Trash({
-			scene : env,
-			interval: 200
-		});
 
+<script src="./app.js"></script>
 
-	$(document).ready(function() {
-		$("#start").on("click", function() {
-			cln.run();
-		});
-
-		$("#stop").on("click", function() {
-			cln.stop();
-		});
-
-		$("#gen").on("click", function() {
-			env.cleanAllTrash();
-			gen.staticGeneration();
-		});
-	}); 
-
-</script>	
 </body>
 </html>

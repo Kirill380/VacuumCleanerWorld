@@ -1,28 +1,40 @@
+/*TODO refactor sizes*/
 svg {
 	width: 609px;
-	height: 600px;
+	height: 609px;
 }
 
 .svg-container {
 	margin: 0 auto;
 	width: 609px;
+	position: relative;
 }
 
-/*#cleaner {
-	opacity: 0.5;
-    cursor: pointer;
+.play-arena {
+	background: #CCC;
+    height: 609px;
 }
 
-#cleaner:focus {
-	opacity: 1;
-	outline: none;
-}*/
+/*TODO refactor*/
+.menu-container {
+	display: table;
+    height: 609px;
+}
 
+.menu {
+	display: table-cell;
+	vertical-align: middle;
+}
 
 .clean-event {
+	z-index: 99;
 	position: absolute;
     font-size: 20px;
     font-weight: bold;
     font-family: impact;
     color: #03A9F4;
+}
+
+.container_cleaner {
+    margin-top:20px;
 }
