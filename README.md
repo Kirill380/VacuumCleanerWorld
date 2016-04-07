@@ -1,4 +1,4 @@
-# VacuumCleanerWorld
+# Vacuum Cleaner World on JS
 
 ### Short description
 Vacuum cleaner know about map and trash location. You can run four different algorithms - *Greedy Algorithm*, *Random Algorithm*, *Genetic Algorithm*
