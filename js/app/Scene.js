@@ -1,10 +1,11 @@
 "use strict";
-import { random } from "underscore";
+import { random, isEmpty } from "underscore";
 import $ from "jQuery";
 import Snap from "snapsvg";
 
+
 // TODO refactor 5 unit shift coordinate
-function Environment(options) {
+function Scene(options) {
     var s = options.svg || Snap("#svg");
     var mapNum = options.mapNum || 1;
     var CELL_SIZE = options.cellSize || 60;
@@ -21,7 +22,7 @@ function Environment(options) {
         [1, 0, 1, 1, 0, 1, 1, 1, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    ];;
+    ];
 
     var cellStyle = {
         fill: "#bada55",
@@ -35,6 +36,7 @@ function Environment(options) {
         stroke: "#000",
         strokeWidth: 3
     };
+
 
 
     function renderScene() {
@@ -61,10 +63,10 @@ function Environment(options) {
     }
 
     // TODO refactor API
-    function moveCell(el, dx, dy) {
+    function stepTo(el, dx, dy) {
         var x = el.getBBox().x;
         var y = el.getBBox().y;
-        if (isWall(convertToXY(y) + dy, convertToXY(x) + dx) || isGreateLimit(convertToXY(x) + dx, convertToXY(y) + dy)) {
+        if (isWall(convertToXY(y) + dy, convertToXY(x) + dx) || isGreaterLimit(convertToXY(x) + dx, convertToXY(y) + dy)) {
             var cell = s.select("[x='" + x + "'][y='" + y + "']");
             cell.animate({fill: "red"}, 1000);
             setTimeout(function () {
@@ -77,6 +79,16 @@ function Environment(options) {
         return true;
     }
 
+    function moveTo(el, x, y) {
+        if (isWall(y, x) || isGreaterLimit(x, y)) {
+            return false;
+        }
+        el.attr({
+            x: convertToAbsPos(x),
+            y: convertToAbsPos(y)
+        });
+        return true;
+    }
 
     //TODO refactor zoom
     function getTrashOnCell(x, y) {
@@ -85,15 +97,32 @@ function Environment(options) {
     }
 
 
+    function getAllTrash() {
+        var trashArray = [];
+        for (var y = 0; y < map.length; y++) {
+            for (var x = 0; x < map[0].length; x++) {
+                if (!isWall(y, x)) {
+                    var trashOnCell = getTrashOnCell(convertToAbsPos(x), convertToAbsPos(y));
+                    if (trashOnCell.length != 0) {
+                        trashArray.push({
+                            count: trashOnCell.length,
+                            coord: {x: x, y: y}
+                        });
+                    }
+                }
+            }
+        }
+        return trashArray;
+    }
+
     function isSceneClean() {
         return s.selectAll(".trash-item").length == 0;
     }
 
+    //TODO refactor
     function cleanAllTrash() {
         var trash = s.selectAll(".trash-item");
-        trash.forEach(function (t) {
-            t.remove()
-        });
+        trash.forEach(t => t.remove());
     }
 
     function loadMap(num) {
@@ -106,35 +135,32 @@ function Environment(options) {
             },
             error: function (jqXHR, status) {
                 console.log("Can't load map: " + status);
-                map = [
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-                    [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-                    [1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
-                    [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-                    [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-                    [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-                    [1, 0, 1, 1, 0, 1, 1, 1, 0, 1],
-                    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-                ];
             }
         })
     }
 
 
-    function convertToXY(cord) {
-        return (cord - SHIFT) / CELL_SIZE;
+    function convertToXY(position) {
+        return (position - SHIFT) / CELL_SIZE;
     }
 
-    function isWall(i, j) {
-        return map[i][j];
+    function convertToAbsPos(coord) {
+        return coord * CELL_SIZE + SHIFT
+    }
+
+    function isWall(y, x) {
+        return map[y][x];
     }
 
 
-    function isGreateLimit(x, y) {
+    function getFullMap() {
+        return JSON.parse(JSON.stringify(map));
+    }
+
+    function isGreaterLimit(x, y) {
         return x > N - 1 || y > N - 1 || x < 0 || y < 0;
     }
+
 
     //TODO optimize
     function getRandomFreeCell() {
@@ -149,13 +175,16 @@ function Environment(options) {
     this.renderScene = renderScene;
     this.isWall = isWall;
     this.renderCell = renderCell;
-    this.moveCell = moveCell;
+    this.stepTo = stepTo;
     this.getRandomFreeCell = getRandomFreeCell;
     this.getTrashOnCell = getTrashOnCell;
     this.isSceneClean = isSceneClean;
     this.cleanAllTrash = cleanAllTrash;
-
+    this.getFullMap = getFullMap;
+    this.getAllTrash = getAllTrash;
+    this.moveTo = moveTo;
+    this.convertToXY = convertToXY;
 }
 
-export default Environment;
+export default Scene;
 

@@ -9,19 +9,21 @@
     "url": "https://kirill_liubun@bitbucket.org/kirill_liubun/nc-sdn-sim-js-css.git"
   },
   "keywords": [
-    "javascript",
-    "css",
-    "webpack"
+    "vacuum cleaner world"
   ],
   "dependencies": {
     "babel-core": "5.8.34",
     "babel-loader": "5.4.0",
+    "commonjs-highcharts": "*",
     "highcharts": "^4.2.3",
+    "imports-loader": "*",
     "jquery": "2.1.4",
+    "js-combinatorics": "^0.5.0",
+    "pathfinding": "*",
     "snapsvg": "*",
     "underscore": "1.8.3",
     "webpack": "1.12.9",
-    "imports-loader" : "*"
+    "js-combinatorics" : "*"
   },
   "license": "MIT"
 }

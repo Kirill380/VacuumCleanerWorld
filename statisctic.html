@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--TODO refactor-->
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/highcharts/highcharts.js"></script>
+    <script src="./node_modules/highcharts/modules/exporting.js"></script>
+</head>
+<body>
+<div id="chart"></div>
+<script>
+    $(function () {
+        $('#chart').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Energy Comparison'
+            },
+            xAxis: {
+                categories: [
+                    'Energy'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Genetic Algorithm',
+                data: [123]
+
+            }, {
+                name: 'Greedy Algorithm',
+                data: [90]
+
+            }]
+        });
+    });
+</script>
+</body>
+</html>

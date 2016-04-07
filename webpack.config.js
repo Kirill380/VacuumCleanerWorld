@@ -1,9 +1,13 @@
 module.exports = {
-    entry: "./js/Main.js",
-    output: {
-        filename: "app.js"
+    entry: {
+        main: "./js/app/Main.js"
     },
-    module:  {
+    output: {
+        path: __dirname + "/js/build",
+        filename: "[name].js"
+
+    },
+    module: {
         loaders: [{
             test: /\.js$/,
             exclude: /node_modules/,
@@ -18,5 +22,5 @@ module.exports = {
         }]
     },
 
-    devtool : "source-map"
+    devtool: "source-map"
 };

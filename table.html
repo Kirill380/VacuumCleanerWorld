@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graph matrix</title>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <style>
+        #matrix {
+            border: 1px solid #000000;
+            border-collapse: collapse;
+        }
+        #matrix td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+            vertical-align: center;
+        }
+    </style>
+</head>
+<body>
+<table id="matrix"></table>
+<script>
+    $(document).ready(function () {
+        var matrix = JSON.parse(localStorage.getItem("getGraphMatrix"));
+
+        var table = $("#matrix");
+
+        for (var i = 0; i < matrix.length; i++) {
+            var row = $("<tr></tr>").appendTo(table);
+            console.log(row);
+            for (var j = 0; j < matrix[0].length; j++) {
+                row.append("<td>" + matrix[i][j] + "</td>");
+            }
+        }
+    });
+</script>
+</body>
+</html>

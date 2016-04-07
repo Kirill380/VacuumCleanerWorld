@@ -22,6 +22,11 @@
 	  				<div class="btn-group btn-group-justified" role="group"> 
 			  			<div class="btn-group" role="group">
 			  				<button class="btn btn-success" id="start">Start</button>
+                            <select name="" id="map">
+                                <option value="1">Map 1</option>
+                                <option value="2">Map 2</option>
+                                <option value="3">Map 3</option>
+                            </select>
 			  			</div>
 		  			</div>
 		  			<br>
@@ -30,19 +35,48 @@
 			  				<button class="btn btn-primary" id="gen">Generate Trash</button>
 			  			</div>
 		  			</div>
+                    <br>
+                    <div class="btn-group btn-group-justified" role="group">
+                        <div class="btn-group btn-group-justified" role="group">
+                            <button class="btn btn-primary" id="trip">Go Trip</button>
+                            <select name="" id="algorithms">
+                                <option value="genetic">Genetic Algorithm</option>
+                                <option value="greedy">Greedy Algorithm</option>
+                                <option value="branch_bound">Branch and Bound Algorithm</option>
+                            </select>
+                        </div>
+                    </div>
 		  			<br>
 		  			<div class="btn-group btn-group-justified" role="group"> 
 			  			<div class="btn-group btn-group-justified" role="group">
 			  				<button class="btn btn-danger" id="stop">Stop</button>
 			  			</div>
 		  			</div>
+                    <br>
+                    <div class="btn-group btn-group-justified" role="group">
+                        <div class="btn-group btn-group-justified" role="group">
+                            <button class="btn btn-primary" id="restart">Restart</button>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="count"></div>
+                    <br/>
+                    <div class="statistic">
+                        <a href="./statisctic.html">Show Statistic</a>
+                    </div>
+                    <br/>
+                    <div class="statistic">
+                        <a href="./table.html">Show Graph Matrix</a>
+                    </div>
+                    <br/>
+                    <a href="https://github.com/Kirill380/VacuumCleanerWorld/tree/master">Look Documentation on GitHub</a>
   				</div>
   			</div>
   		</div>
 	</div>
 </div>
 
-<script src="./app.js"></script>
+<script src="./js/build/main.js"></script>
 
 </body>
 </html>
