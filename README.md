@@ -2,6 +2,10 @@
 
 ![main view](img/main.png)
 
+## WARNING
+**IT IS A DEMO PROJECT THAT HAS CRITICAL ISSUES IN FUNCTIONALITY AND HARDCODED VALUES**
+
+
 ### How to run
 
 1. Install [npm](https://www.npmjs.com/get-npm) on your OS.
