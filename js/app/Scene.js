@@ -1,6 +1,6 @@
 "use strict";
 import { random, isEmpty } from "underscore";
-import $ from "jQuery";
+import $ from "jquery";
 import Snap from "snapsvg";
 
 

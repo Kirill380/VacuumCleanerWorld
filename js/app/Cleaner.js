@@ -1,6 +1,6 @@
 "use strict";
 import { random, isObject, contains } from "underscore";
-import $ from "jQuery";
+import $ from "jquery";
 import animation from "./Animation.js";
 import evolve from "../vendor/EvolveJS.js";
 import PF from "pathfinding";

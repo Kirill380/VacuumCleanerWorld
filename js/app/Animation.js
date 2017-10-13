@@ -1,5 +1,5 @@
 "use strict";
-import $ from "jQuery";
+import $ from "jquery";
 // TODO refactor hardcoded value 20 and rename method
 export default {
     createCleanEvent: function (num, x, y) {

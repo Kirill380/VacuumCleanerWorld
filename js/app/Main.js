@@ -1,5 +1,5 @@
 "use strict";
-import $ from "jQuery";
+import $ from "jquery";
 import Snap from "snapsvg";
 import Scene from "./Scene.js";
 import Cleaner from "./Cleaner.js";

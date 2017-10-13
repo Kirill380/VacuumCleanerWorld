@@ -1,6 +1,6 @@
 "use strict";
 import { random } from "underscore";
-import $ from "jQuery";
+import $ from "jquery";
 
 function Trash(options) {
     var images = ["./img/donat.png", "./img/coca-cola.png", "./img/cookie.png"];
