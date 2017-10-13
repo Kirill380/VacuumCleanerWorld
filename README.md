@@ -1,5 +1,15 @@
 # Vacuum Cleaner World on JS
 
+![main view](img/main.png)
+
+### How to run
+
+1. Install [npm](https://www.npmjs.com/get-npm) on your OS.
+2. Install webpack -- `npm install webpack`
+3. Run next command to download required dependencies -- `npm install`
+4. Run `webpack` command in the project directory.
+5. Now you can open `index.html` in browser and start playing. 
+
 ### Short description
 Vacuum cleaner know about map and trash location. You can run four different algorithms - *Greedy Algorithm*, *Random Algorithm*, *Genetic Algorithm*
 and *Method of Branch and Bound*, also you can control robot manually. When robot starts building trip it creates Adjacency matrix using *A start algorithm* to find shorter route between two points and two additional structures - dictionary where key is coordinates of two points and value
